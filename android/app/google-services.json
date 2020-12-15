@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "54652982478",
+    "project_id": "vandamvc-25cac",
+    "storage_bucket": "vandamvc-25cac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54652982478:android:7787e8327d1e2c68ecac9f",
+        "android_client_info": {
+          "package_name": "com.example.mvp_vandal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54652982478-crma0bjjtj9nke00ugldl15kik6qaq3u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mvp_vandal",
+            "certificate_hash": "d7980bf2d6106be6b25fe56d7c626c0f47bf52cd"
+          }
+        },
+        {
+          "client_id": "54652982478-d1rpu2697d133eal44ljtcqg9pfotieq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs6WSHFpHKmzOklECb_o_Hko6pBmH1dgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54652982478-d1rpu2697d133eal44ljtcqg9pfotieq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
