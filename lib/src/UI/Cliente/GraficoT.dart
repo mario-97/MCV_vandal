@@ -55,6 +55,7 @@ class _GraficoTTState extends State<GraficoTT> {
           primaryColor: Colors.black,
           accentColor: Colors.orange[600],
         ),
+        debugShowCheckedModeBanner: false,
         home: DefaultTabController(
             length: 5,
             child: Scaffold(

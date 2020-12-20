@@ -60,9 +60,10 @@ class _RegistroState extends State<Registro> {
         accentColor: Colors.orange[600],
       ),
       initialRoute: '/registro',
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: GradientAppBar(
-          title: Text('Usuadio del Sistema'),
+          title: Text('Usuario del Sistema'),
           backgroundColorStart: Colors.orange[900],
           backgroundColorEnd: Colors.amber,
         ),

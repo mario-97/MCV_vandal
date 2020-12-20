@@ -55,6 +55,7 @@ class _IngresarDietaState extends State<IngresarDieta> {
           accentColor: Colors.orange[600],
         ),
         initialRoute: '/ingresarDietas',
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: GradientAppBar(
               title: Text('Ingresar Dieta'),

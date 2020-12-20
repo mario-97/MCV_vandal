@@ -14,7 +14,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mvp_vandal/src/UI/Cliente/seleccionados.dart';
 import 'package:mvp_vandal/src/UI/Cliente/GraficoT.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
-import 'package:mvp_vandal/src/UI/nutricionista/home.dart';
 
 String rol;
 String id;
@@ -45,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
           '/registro': (context) => Registro(),
           '/resumen': (context) => Resumen(),
         },
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             drawer: Drawer(
               // Barra lateral

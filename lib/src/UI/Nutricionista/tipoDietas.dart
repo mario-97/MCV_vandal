@@ -26,6 +26,7 @@ class _TipoDietasState extends State<TipoDietas> {
           primaryColor: Colors.black,
           accentColor: Colors.orange[600],
         ),
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             // termina barra drawer
             appBar: GradientAppBar(
@@ -35,6 +36,8 @@ class _TipoDietasState extends State<TipoDietas> {
             ),
             body: Center(
               child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: double.infinity,
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topRight,
@@ -52,68 +55,98 @@ class _TipoDietasState extends State<TipoDietas> {
                       Colors.orange[900]
                     ])),
                 child: Column(children: <Widget>[
-                  Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    margin: EdgeInsets.all(15),
-                    elevation: 10,
-                    child: Column(children: <Widget>[
-                      Image(
-                          image:
-                              new AssetImage('assets/images/perderpeso.jpg')),
-                      ListTile(
-                          title: new Text("Dietas para Perder peso",
-                              style: TextStyle(color: Colors.orange[700])),
-                          subtitle: Text("Baja en Carbohidratos y grasas"),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DietaUno()));
-                          }),
-                    ]),
-                  ),
-                  Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    margin: EdgeInsets.all(15),
-                    elevation: 10,
-                    child: Column(children: <Widget>[
-                      Image(
-                          image:
-                              new AssetImage('assets/images/tonificar2.jpg')),
-                      ListTile(
-                          title: new Text("Dietas para Tonificar",
-                              style: TextStyle(color: Colors.orange[700])),
-                          subtitle: Text("Dieta equilibrada"),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DosDieta()));
-                          }),
-                    ]),
-                  ),
-                  Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    margin: EdgeInsets.all(15),
-                    elevation: 10,
-                    child: Column(children: <Widget>[
-                      Image(
-                          image: new AssetImage('assets/images/ganarmasa.jpg')),
-                      ListTile(
-                          title: new Text("Dietas para Ganar masa muscular",
-                              style: TextStyle(color: Colors.orange[700])),
-                          subtitle: Text("Sobrecarga de proteinas"),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => TresDieta()));
-                          }),
-                    ]),
-                  )
+                  Expanded(
+                      flex: 1,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          margin: EdgeInsets.all(15),
+                          elevation: 10,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height / 3,
+                            child: Column(children: <Widget>[
+                              Image(
+                                  image: new AssetImage(
+                                      'assets/images/perderpeso.jpg')),
+                              Expanded(
+                                flex: 1,
+                                child: ListTile(
+                                    title: new Text("Dietas para Perder peso",
+                                        style: TextStyle(
+                                            color: Colors.orange[700])),
+                                    subtitle:
+                                        Text("Baja en Carbohidratos y grasas"),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DietaUno()));
+                                    }),
+                              )
+                            ]),
+                          ))),
+                  Expanded(
+                      flex: 1,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          margin: EdgeInsets.all(15),
+                          elevation: 10,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height / 3,
+                            child: Column(children: <Widget>[
+                              Image(
+                                  image: new AssetImage(
+                                      'assets/images/tonificar2.jpg')),
+                              Expanded(
+                                flex: 1,
+                                child: ListTile(
+                                    title: new Text("Dietas para Tonificar",
+                                        style: TextStyle(
+                                            color: Colors.orange[700])),
+                                    subtitle: Text("Dieta equilibrada"),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DosDieta()));
+                                    }),
+                              )
+                            ]),
+                          ))),
+                  Expanded(
+                      flex: 1,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          margin: EdgeInsets.all(15),
+                          elevation: 10,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height / 3,
+                            child: Column(children: <Widget>[
+                              Image(
+                                  image: new AssetImage(
+                                      'assets/images/ganarmasa.jpg')),
+                              Expanded(
+                                flex: 1,
+                                child: ListTile(
+                                    title: new Text(
+                                        "Dietas para Ganar masa muscular",
+                                        style: TextStyle(
+                                            color: Colors.orange[700])),
+                                    subtitle: Text("Sobrecarga de proteinas"),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  TresDieta()));
+                                    }),
+                              )
+                            ]),
+                          )))
                 ]),
               ),
             )));

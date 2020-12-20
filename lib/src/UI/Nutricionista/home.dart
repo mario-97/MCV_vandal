@@ -32,6 +32,7 @@ class _HomeNutriState extends State<HomeNutri> {
         '/ingresarDieta': (context) => IngresarDieta(),
         '/home': (context) => SplashScreen(),
       },
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: GradientAppBar(
           title: Text("Dietas"),
@@ -40,6 +41,8 @@ class _HomeNutriState extends State<HomeNutri> {
         ),
         body: Center(
           child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: double.infinity,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topRight,
@@ -57,44 +60,64 @@ class _HomeNutriState extends State<HomeNutri> {
                   Colors.orange[900]
                 ])),
             child: Column(children: <Widget>[
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                margin: EdgeInsets.all(15),
-                elevation: 10,
-                child: Column(children: <Widget>[
-                  Image(image: new AssetImage('assets/images/dieta.jpg')),
-                  ListTile(
-                      title: new Text("Categorias de Dietas",
-                          style: TextStyle(color: Colors.orange[700])),
-                      subtitle:
-                          Text("Perder peso, Tonificar, Ganar masa muscular"),
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TipoDietas()));
-                      }),
-                ]),
-              ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                margin: EdgeInsets.all(15),
-                elevation: 10,
-                child: Column(children: <Widget>[
-                  Image(image: new AssetImage('assets/images/agregar.jpg')),
-                  ListTile(
-                      title: new Text("Agregar nueva dieta",
-                          style: TextStyle(color: Colors.orange[700])),
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => IngresarDieta()));
-                      }),
-                ]),
-              ),
+              Expanded(
+                  flex: 1,
+                  child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: EdgeInsets.all(15),
+                      elevation: 10,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 3,
+                        child: Column(children: <Widget>[
+                          Image(
+                              image: new AssetImage('assets/images/dieta.jpg')),
+                          Expanded(
+                            flex: 1,
+                            child: ListTile(
+                                title: new Text("Categorias de Dietas",
+                                    style:
+                                        TextStyle(color: Colors.orange[700])),
+                                subtitle: Text(
+                                    "Perder peso, Tonificar, Ganar masa muscular"),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => TipoDietas()));
+                                }),
+                          )
+                        ]),
+                      ))),
+              Expanded(
+                  flex: 1,
+                  child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: EdgeInsets.all(15),
+                      elevation: 10,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 4,
+                        child: Column(children: <Widget>[
+                          Image(
+                              image:
+                                  new AssetImage('assets/images/agregar.jpg')),
+                          Expanded(
+                            flex: 1,
+                            child: ListTile(
+                                title: new Text("Agregar nueva dieta",
+                                    style:
+                                        TextStyle(color: Colors.orange[700])),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              IngresarDieta()));
+                                }),
+                          )
+                        ]),
+                      ))),
               Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),

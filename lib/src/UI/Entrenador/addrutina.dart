@@ -88,6 +88,7 @@ class _RutinaState extends State<Rutina> {
         accentColor: Colors.orange[600],
       ),
       initialRoute: '/rutina',
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: GradientAppBar(
           title: Text('Agregar Ejercicio'),

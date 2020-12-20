@@ -11,6 +11,7 @@ class DietaTres extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: TresDieta(),
     );
   }
@@ -34,6 +35,7 @@ class _TresDietaState extends State<TresDieta> {
           primaryColor: Colors.black,
           accentColor: Colors.orange[600],
         ),
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             // termina barra drawer
             appBar: GradientAppBar(

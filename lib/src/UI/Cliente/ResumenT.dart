@@ -30,6 +30,7 @@ class ResumenT extends StatelessWidget {
         routes: {
           '/controller': (context) => UserController(datos: this.datos),
         },
+        debugShowCheckedModeBanner: false,
         home: DefaultTabController(
             length: 5,
             child: Scaffold(

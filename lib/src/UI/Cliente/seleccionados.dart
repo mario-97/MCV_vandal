@@ -48,6 +48,7 @@ class _SeleccState extends State<Selecc> {
         routes: {
           '/controller': (context) => UserController(datos: this.datos),
         },
+        debugShowCheckedModeBanner: false,
         home: DefaultTabController(
             length: 5,
             child: Scaffold(

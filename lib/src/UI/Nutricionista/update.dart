@@ -39,6 +39,7 @@ class UpdateDieta extends StatelessWidget {
           accentColor: Colors.orange[600],
         ),
         initialRoute: '/updateDieta',
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: GradientAppBar(
               title: Text('Editar Dieta'),
@@ -47,6 +48,8 @@ class UpdateDieta extends StatelessWidget {
             ),
             body: Center(
                 child: Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                             begin: Alignment.topRight,
@@ -110,6 +113,9 @@ class UpdateDieta extends StatelessWidget {
                                     }
 
                                     return Container(
+                                        height:
+                                            MediaQuery.of(context).size.height,
+                                        width: double.infinity,
                                         margin: new EdgeInsets.symmetric(
                                             horizontal: 30.0),
                                         child: Column(
@@ -119,7 +125,7 @@ class UpdateDieta extends StatelessWidget {
                                               new Image(
                                                   image: new AssetImage(
                                                       'assets/images/2.png'),
-                                                  height: 120,
+                                                  height: 90,
                                                   alignment: Alignment.center),
                                               Row(
                                                   mainAxisAlignment:

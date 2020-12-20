@@ -55,6 +55,7 @@ class UpdateEjercicio extends StatelessWidget {
           accentColor: Colors.orange[600],
         ),
         initialRoute: '/detalle',
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: GradientAppBar(
               title: Text('Modificar Ejercicio'),

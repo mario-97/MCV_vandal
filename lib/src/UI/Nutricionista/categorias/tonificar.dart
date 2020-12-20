@@ -10,6 +10,7 @@ class DietaDos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DosDieta(),
     );
   }
@@ -33,6 +34,7 @@ class _DosDietaState extends State<DosDieta> {
           primaryColor: Colors.black,
           accentColor: Colors.orange[600],
         ),
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             // termina barra drawer
             appBar: GradientAppBar(

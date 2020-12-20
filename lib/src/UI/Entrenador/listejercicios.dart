@@ -25,6 +25,7 @@ class Ejercicios extends StatefulWidget {
 
 class _EjerciciosState extends State<Ejercicios> {
   String rol;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,6 +35,7 @@ class _EjerciciosState extends State<Ejercicios> {
           primaryColor: Colors.black,
           accentColor: Colors.orange[600],
         ),
+        debugShowCheckedModeBanner: false,
         home: DefaultTabController(
             length: 5,
             child: Scaffold(
@@ -90,6 +92,8 @@ class _EjerciciosState extends State<Ejercicios> {
                 ),
                 body: Center(
                   child: Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                             begin: Alignment.topRight,
@@ -107,70 +111,98 @@ class _EjerciciosState extends State<Ejercicios> {
                           Colors.orange[900]
                         ])),
                     child: Column(children: <Widget>[
-                      Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        margin: EdgeInsets.all(15),
-                        elevation: 10,
-                        child: Column(children: <Widget>[
-                          Image(
-                              image: new AssetImage(
-                                  'assets/images/adelgazar.jpg')),
-                          ListTile(
-                              title: new Text("Ejercicios para Perder peso",
-                                  style: TextStyle(color: Colors.orange[700])),
-                              subtitle: Text("Baja en Carbohidratos y grasas"),
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Uno()));
-                              }),
-                        ]),
+                      Expanded(
+                        flex: 1,
+                        child: Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            margin: EdgeInsets.all(15),
+                            elevation: 10,
+                            child: Container(
+                              height: MediaQuery.of(context).size.height / 3,
+                              child: Column(children: <Widget>[
+                                Image(
+                                    image: new AssetImage(
+                                        'assets/images/adelgazar.jpg')),
+                                Expanded(
+                                  flex: 1,
+                                  child: ListTile(
+                                      title: new Text(
+                                          "Ejercicios para Perder peso",
+                                          style: TextStyle(
+                                              color: Colors.orange[700])),
+                                      subtitle: Text(
+                                          "Baja en Carbohidratos y grasas"),
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => Uno()));
+                                      }),
+                                )
+                              ]),
+                            )),
                       ),
-                      Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        margin: EdgeInsets.all(15),
-                        elevation: 10,
-                        child: Column(children: <Widget>[
-                          Image(
-                              image: new AssetImage(
-                                  'assets/images/tonificar.jpg')),
-                          ListTile(
-                              title: new Text("Ejercicios para Tonificar",
-                                  style: TextStyle(color: Colors.orange[700])),
-                              subtitle: Text("Dieta equilibrada"),
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Dos()));
-                              }),
-                        ]),
-                      ),
-                      Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        margin: EdgeInsets.all(15),
-                        elevation: 10,
-                        child: Column(children: <Widget>[
-                          Image(
-                              image:
-                                  new AssetImage('assets/images/musculo.jpg')),
-                          ListTile(
-                              title: new Text(
-                                  "Ejercicios para Ganar masa muscular",
-                                  style: TextStyle(color: Colors.orange[700])),
-                              subtitle: Text("Sobrecarga de proteinas"),
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Tres()));
-                              }),
-                        ]),
-                      )
+                      Expanded(
+                          flex: 1,
+                          child: Card(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              margin: EdgeInsets.all(15),
+                              elevation: 10,
+                              child: Container(
+                                height: MediaQuery.of(context).size.height / 3,
+                                child: Column(children: <Widget>[
+                                  Image(
+                                      image: new AssetImage(
+                                          'assets/images/tonificar.jpg')),
+                                  Expanded(
+                                    child: ListTile(
+                                        title: new Text(
+                                            "Ejercicios para Tonificar",
+                                            style: TextStyle(
+                                                color: Colors.orange[700])),
+                                        subtitle: Text("Dieta equilibrada"),
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => Dos()));
+                                        }),
+                                  )
+                                ]),
+                              ))),
+                      Expanded(
+                          flex: 1,
+                          child: Card(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              margin: EdgeInsets.all(15),
+                              elevation: 10,
+                              child: Container(
+                                height: MediaQuery.of(context).size.height / 3,
+                                child: Column(children: <Widget>[
+                                  Image(
+                                      image: new AssetImage(
+                                          'assets/images/musculo.jpg')),
+                                  Expanded(
+                                    child: ListTile(
+                                        title: new Text(
+                                            "Ejercicios para Ganar masa muscular",
+                                            style: TextStyle(
+                                                color: Colors.orange[700])),
+                                        subtitle:
+                                            Text("Sobrecarga de proteinas"),
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Tres()));
+                                        }),
+                                  )
+                                ]),
+                              )))
                     ]),
                   ),
                 ))));

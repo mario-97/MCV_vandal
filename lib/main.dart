@@ -16,10 +16,19 @@ var routes = <String, WidgetBuilder>{
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'FaceBase',
     routes: routes,
+    builder: (context, child) => SafeArea(
+      minimum: const EdgeInsets.only(top: 50.0),
+      child: child,
+      top: true,
+      bottom: true,
+      left: true,
+      right: true,
+    ),
     home: SplashScreen(),
   ));
 }

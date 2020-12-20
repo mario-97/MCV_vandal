@@ -28,6 +28,7 @@ class _DietaState extends State<Dieta> {
           accentColor: Colors.orange[600],
         ),
         initialRoute: '/registro',
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: GradientAppBar(
               title: Text("Listado de dietas"),

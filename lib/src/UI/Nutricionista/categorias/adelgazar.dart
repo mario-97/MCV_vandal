@@ -12,6 +12,7 @@ class DietaUno extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/adelgazar',
       home: UnoDieta(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -33,6 +34,7 @@ class _UnoDietaState extends State<UnoDieta> {
           primaryColor: Colors.black,
           accentColor: Colors.orange[600],
         ),
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             // termina barra drawer
             appBar: GradientAppBar(

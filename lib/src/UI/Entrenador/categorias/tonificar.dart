@@ -37,6 +37,7 @@ class _DosState extends State<Dos> {
           primaryColor: Colors.black,
           accentColor: Colors.orange[600],
         ),
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             // termina barra drawer
             appBar: GradientAppBar(

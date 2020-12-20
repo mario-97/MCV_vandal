@@ -28,6 +28,7 @@ class _HomeState extends State<Home> {
           accentColor: Colors.cyan[600],
         ),
         initialRoute: '/home',
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             body: Scaffold(
                 body: Center(

@@ -36,6 +36,7 @@ class Detalle extends StatelessWidget {
           accentColor: Colors.orange[600],
         ),
         initialRoute: '/registro',
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: GradientAppBar(
               title: Text('Detalle del Ejercicio'),

@@ -72,6 +72,7 @@ class UpdateAdmin extends StatelessWidget {
         routes: {
           '/lista': (context) => Lista(),
         },
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: GradientAppBar(
               title: Text('Actualizar usuario '),

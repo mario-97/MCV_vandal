@@ -38,6 +38,7 @@ class _ListaState extends State<Lista> {
           accentColor: Colors.orange[600],
         ),
         initialRoute: '/lista',
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             // termina barra drawer
             appBar: GradientAppBar(

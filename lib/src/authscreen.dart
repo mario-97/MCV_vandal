@@ -49,6 +49,7 @@ class _AuthScreenState extends State<AuthScreen> {
           accentColor: Colors.cyan[600],
         ),
         initialRoute: '/auth',
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           body: Stack(
             children: <Widget>[

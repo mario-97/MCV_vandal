@@ -34,6 +34,7 @@ class MiApp extends StatelessWidget {
           accentColor: Colors.orange[600],
         ),
         initialRoute: '/registro',
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           body: Center(
             child: Container(
