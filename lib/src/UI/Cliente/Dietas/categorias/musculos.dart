@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mvp_vandal/src/UI/entrenador/detalle.dart';
 import 'package:mvp_vandal/src/datos/actividad.dart';
-import 'package:mvp_vandal/src/UI/Nutricionista/update.dart';
+import 'package:mvp_vandal/src/UI/Cliente/Dietas/Detalle.dart';
 
 import 'package:mvp_vandal/src/datos/minuta.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
@@ -121,7 +121,7 @@ class _TresDietaState extends State<TresDieta> {
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              UpdateDieta(
+                                                              DetalleDieta(
                                                                 data: data,
                                                               )));
                                                 }),

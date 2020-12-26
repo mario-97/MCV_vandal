@@ -1,20 +1,28 @@
+import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:mvp_vandal/src/UI/Cliente/Dietas/GraficoT.dart';
 import 'package:mvp_vandal/src/homescreen.dart';
+import 'package:mvp_vandal/src/miapp.dart';
 import 'package:mvp_vandal/src/authscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:mvp_vandal/src/UI/nutricionista/dietas.dart';
 import 'package:mvp_vandal/src/UI/nutricionista/ingresarDieta.dart';
 import 'package:mvp_vandal/src/splashscreen.dart';
-import 'package:mvp_vandal/src/UI/nutricionista/tipoDietas.dart';
+import 'package:mvp_vandal/src/home.dart';
+import 'package:mvp_vandal/src/UI/Cliente/Dietas/tipoDietas.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomeNutri extends StatefulWidget {
-  _HomeNutriState createState() => _HomeNutriState();
+class DietasHomeCliente extends StatefulWidget {
+  _DietasHomeClienteState createState() => _DietasHomeClienteState();
 }
 
+String rol;
 String id;
 
-class _HomeNutriState extends State<HomeNutri> {
+class _DietasHomeClienteState extends State<DietasHomeCliente> {
   @override
   Widget build(BuildContext context) {
     Query query = FirebaseFirestore.instance.collection("usuarios");
@@ -25,7 +33,7 @@ class _HomeNutriState extends State<HomeNutri> {
         primaryColor: Colors.black,
         accentColor: Colors.orange[600],
       ),
-      initialRoute: '/homeNutri',
+      initialRoute: '/dietasHomeCliente',
       routes: {
         //'/dietas': (context) => Dieta(),
         '/ingresarDieta': (context) => IngresarDieta(),
@@ -83,7 +91,8 @@ class _HomeNutriState extends State<HomeNutri> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => TipoDietas()));
+                                          builder: (context) =>
+                                              TipoDietasCliente()));
                                 }),
                           )
                         ]),
@@ -100,19 +109,19 @@ class _HomeNutriState extends State<HomeNutri> {
                         child: Column(children: <Widget>[
                           Image(
                               image:
-                                  new AssetImage('assets/images/agregar.jpg')),
+                                  new AssetImage('assets/images/Resumen.jpg')),
                           Expanded(
                             flex: 1,
                             child: ListTile(
-                                title: new Text("Agregar nueva dieta",
+                                title: new Text("Ver resumenes",
                                     style:
                                         TextStyle(color: Colors.orange[700])),
+                                subtitle: Text("Gráficos y estadisticas "),
                                 onTap: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              IngresarDieta()));
+                                          builder: (context) => GraficoTT()));
                                 }),
                           )
                         ]),

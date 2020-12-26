@@ -29,7 +29,7 @@ class _ResumenState extends State<Resumen> {
   double tiempopromedio = 0;
   final Actividad data = new Actividad("", "", "", "", "", "", "", "");
   final InfoEjercicio datos =
-      new InfoEjercicio("", "", "", "", "", "", "", "", "", "", []);
+      new InfoEjercicio("", "", "", "", "", "", "", "", "", "", [], "", "");
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +48,8 @@ class _ResumenState extends State<Resumen> {
       }).then((_) {
         print("success!" + this.datos.idInfo);
       });
-      this.datos.kcal = kcalpromedio.toString();
-      this.datos.tiempo = tiempopromedio.toString();
+      this.datos.kcal = kcalpromedio.toStringAsFixed(2);
+      this.datos.tiempo = tiempopromedio.toStringAsFixed(2);
       this.datos.nombre = dias.toString();
       this.datos.totalkcal = totalk.toString();
       this.datos.totaltiempo = totalt.toString();

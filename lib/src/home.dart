@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mvp_vandal/src/UI/Nutricionista/home.dart';
 import 'package:mvp_vandal/src/UI/entrenador/listejercicios.dart';
+import 'package:mvp_vandal/src/homescreen.dart';
 
 class Principal extends StatelessWidget {
   @override
@@ -61,17 +62,95 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.all(0),
                         child: Column(
                           children: [
-                            Row(
-                              children: [
+                            if (rol == "Cliente" || rol == "Entrenador")
+                              Row(
+                                children: [
+                                  Expanded(
+                                    flex: 10,
+                                    child: GestureDetector(
+                                        child: Container(
+                                          child: Hero(
+                                            tag: 'imageHero2',
+                                            child: Image(
+                                              image: AssetImage(
+                                                  'assets/images/principal.jpg'),
+                                            ),
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Ejercicios()));
+                                        }),
+                                  ),
+                                ],
+                              ),
+                          ],
+                        ),
+                      ),
+                      color: Colors.white,
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      elevation: 5,
+                      margin: EdgeInsets.all(5),
+                    ),
+                  ),
+                ],
+              ),
+              if (rol == "Cliente" || rol == "Entrenador")
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: Column(
+                            children: [
+                              Text('Rutinas de ejercicios personalizadas',
+                                  style: TextStyle(color: Colors.white)),
+                            ],
+                          ),
+                        ),
+                        color: Colors.orange[900],
+                        semanticContainer: true,
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        elevation: 5,
+                        margin: EdgeInsets.all(5),
+                      ),
+                    ),
+                  ],
+                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: Column(
+                          children: [
+                            if (rol == "Cliente" || rol == "Nutricionista")
+                              Row(children: [
                                 Expanded(
                                   flex: 10,
                                   child: GestureDetector(
                                       child: Container(
                                         child: Hero(
-                                          tag: 'imageHero2',
+                                          tag: 'imageHero',
                                           child: Image(
                                             image: AssetImage(
-                                                'assets/images/principal.jpg'),
+                                                'assets/images/dieta.jpg'),
                                           ),
                                         ),
                                       ),
@@ -80,11 +159,10 @@ class _HomeState extends State<Home> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    Ejercicios()));
+                                                    HomeNutri()));
                                       }),
-                                ),
-                              ],
-                            ),
+                                )
+                              ]),
                           ],
                         ),
                       ),
@@ -100,107 +178,34 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(0),
-                        child: Column(
-                          children: [
-                            Text('Rutinas de ejercicios personalizadas',
-                                style: TextStyle(color: Colors.white)),
-                          ],
+              if (rol == "Cliente" || rol == "Nutricionista")
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: Column(
+                            children: [
+                              Text('Dietas personalizadas',
+                                  style: TextStyle(color: Colors.white)),
+                            ],
+                          ),
                         ),
-                      ),
-                      color: Colors.orange[900],
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      elevation: 5,
-                      margin: EdgeInsets.all(5),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(0),
-                        child: Column(
-                          children: [
-                            Row(children: [
-                              Expanded(
-                                flex: 10,
-                                child: GestureDetector(
-                                    child: Container(
-                                      child: Hero(
-                                        tag: 'imageHero',
-                                        child: Image(
-                                          image: AssetImage(
-                                              'assets/images/dieta.jpg'),
-                                        ),
-                                      ),
-                                    ),
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HomeNutri()));
-                                    }),
-                              )
-                            ]),
-                          ],
+                        color: Colors.orange[900],
+                        semanticContainer: true,
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
+                        elevation: 5,
+                        margin: EdgeInsets.all(5),
                       ),
-                      color: Colors.white,
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      elevation: 5,
-                      margin: EdgeInsets.all(5),
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(0),
-                        child: Column(
-                          children: [
-                            Text('Dietas personalizadas',
-                                style: TextStyle(color: Colors.white)),
-                          ],
-                        ),
-                      ),
-                      color: Colors.orange[900],
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      elevation: 5,
-                      margin: EdgeInsets.all(5),
-                    ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

@@ -8,6 +8,7 @@ import 'package:mvp_vandal/src/UI/Cliente/Resumen.dart';
 import 'package:mvp_vandal/src/authscreen.dart';
 import 'package:mvp_vandal/src/UI/Entrenador/listejercicios.dart';
 import 'package:mvp_vandal/src/UI/Cliente/GraficoT.dart';
+import 'package:mvp_vandal/src/UI/Cliente/Metas.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 int totalkcal = 0;
@@ -30,7 +31,7 @@ class Selecc extends StatefulWidget {
 class _SeleccState extends State<Selecc> {
   final Actividad data = new Actividad("", "", "", "", "", "", "", "");
   final InfoEjercicio datos =
-      new InfoEjercicio("", "", "", "", "", "", "", "", "", "", []);
+      new InfoEjercicio("", "", "", "", "", "", "", "", "", "", [], "", "");
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class _SeleccState extends State<Selecc> {
         },
         debugShowCheckedModeBanner: false,
         home: DefaultTabController(
-            length: 5,
+            length: 6,
             child: Scaffold(
                 // termina barra drawer
                 appBar: GradientAppBar(
@@ -66,6 +67,14 @@ class _SeleccState extends State<Selecc> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Ejercicios()));
+                          }),
+                      GestureDetector(
+                          child: Tab(icon: Icon(Icons.flag)),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MetasT()));
                           }),
                       GestureDetector(
                           child: Tab(icon: Icon(Icons.offline_pin)),

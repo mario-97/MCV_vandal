@@ -12,11 +12,15 @@ import 'package:mvp_vandal/src/UI/Nutricionista/ingresarDieta.dart';
 import 'package:mvp_vandal/src/UI/Nutricionista/dietas.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mvp_vandal/src/UI/Cliente/seleccionados.dart';
+import 'package:mvp_vandal/src/UI/Cliente/Contacto.dart';
+import 'package:mvp_vandal/src/UI/Cliente/Premium.dart';
 import 'package:mvp_vandal/src/UI/Cliente/GraficoT.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:mvp_vandal/src/UI/Cliente/Dietas/DietasHome.dart';
 
 String rol;
 String id;
+String peso;
 
 class HomeScreen extends StatefulWidget {
   final String username;
@@ -28,7 +32,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  final _pages = [Home(), Home(), MiApp()];
+  final _pages = [Home(), Contacto(), MiApp()];
   @override
   Widget build(BuildContext context) {
     Query query = FirebaseFirestore.instance.collection("usuarios");
@@ -76,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           googleSignIn.currentUser.email) {
                                         rol = Docs.get("tipo");
                                         id = Docs.id;
+                                        peso = Docs.get("peso");
                                       }
                                     }
                                     return Container();
@@ -161,6 +166,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         // Then close the drawer
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Rutina()));
+                      },
+                    ),
+                  if (rol == "Cliente")
+                    ListTile(
+                      title: Text('Mis Dietas',
+                          style: TextStyle(
+                            color: Colors.orange[700],
+                          )),
+                      onTap: () {
+                        // Update the state of the app
+                        // ...
+                        // Then close the drawer
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DietasHomeCliente()));
                       },
                     ),
                   if (rol == "Entrenador" || rol == "Cliente")
@@ -255,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   if (rol == "Cliente")
                     ListTile(
-                      title: Text('Método de pago',
+                      title: Text('Suscripcion Primium',
                           style: TextStyle(
                             color: Colors.orange[700],
                           )),
@@ -263,7 +284,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         // Update the state of the app
                         // ...
                         // Then close the drawer
-                        Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Premium()));
                       },
                     ),
                   ListTile(
@@ -324,8 +346,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         )),
                   ),
                   BottomNavigationBarItem(
-                    icon: new Icon(Icons.mail, color: Colors.white),
-                    title: new Text('Mensajes',
+                    icon: new Icon(Icons.star_half, color: Colors.white),
+                    title: new Text('Premium',
                         style: TextStyle(color: Colors.white)),
                   ),
                   BottomNavigationBarItem(

@@ -24,7 +24,7 @@ class Tres extends StatefulWidget {
 class _TresState extends State<Tres> {
   final Actividad data = new Actividad("", "", "", "", "", "", "", "");
   final InfoEjercicio datos =
-      new InfoEjercicio("", "", "", "", "", "", "", "", "", "", []);
+      new InfoEjercicio("", "", "", "", "", "", "", "", "", "", [], "", "");
 
   @override
   Widget build(BuildContext context) {

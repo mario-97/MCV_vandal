@@ -10,6 +10,7 @@ import 'package:mvp_vandal/src/UI/Entrenador/listejercicios.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:mvp_vandal/src/UI/Cliente/GraficoT.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:mvp_vandal/src/UI/Cliente/Metas.dart';
 
 class ResumenT extends StatelessWidget {
   final InfoEjercicio datos;
@@ -17,7 +18,9 @@ class ResumenT extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Query query = FirebaseFirestore.instance.collection("Resumen");
+    Query query = FirebaseFirestore.instance
+        .collection("Resumen")
+        .orderBy("id_incremental");
 
     return MaterialApp(
         theme: ThemeData(
@@ -32,7 +35,7 @@ class ResumenT extends StatelessWidget {
         },
         debugShowCheckedModeBanner: false,
         home: DefaultTabController(
-            length: 5,
+            length: 6,
             child: Scaffold(
                 // termina barra drawer
                 appBar: GradientAppBar(
@@ -48,6 +51,14 @@ class ResumenT extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Ejercicios()));
+                          }),
+                      GestureDetector(
+                          child: Tab(icon: Icon(Icons.flag)),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MetasT()));
                           }),
                       GestureDetector(
                           child: Tab(icon: Icon(Icons.offline_pin)),
@@ -88,6 +99,8 @@ class ResumenT extends StatelessWidget {
                 ),
                 body: Center(
                     child: Container(
+                        height: MediaQuery.of(context).size.height,
+                        width: double.infinity,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
                                 begin: Alignment.topRight,
@@ -137,48 +150,334 @@ class ResumenT extends StatelessWidget {
                                                 Column(children: [
                                                   ListTile(
                                                     title: new Text(
-                                                        Docs.data()[
-                                                            "totalkcal"],
+                                                        "Día: " +
+                                                            (Docs.data()[
+                                                                        "id_incremental"] +
+                                                                    1)
+                                                                .toString(),
                                                         style: TextStyle(
                                                             color: Colors
                                                                 .orange[700])),
-                                                    subtitle: Text(Docs.data()[
-                                                        "totaltiempo"]),
+                                                    subtitle: Text(
+                                                        "Calorías gastadas: " +
+                                                            Docs.data()[
+                                                                "totalkcal"] +
+                                                            "\nTiempo Ejercitado: " +
+                                                            Docs.data()[
+                                                                "totaltiempo"]),
                                                   ),
                                                 ]),
                                             ]))
                                     ]);
                                   })),
                           if (rol == "Cliente")
-                            Text(
-                                "Total kcal quemadas: " +
-                                    datos.totalkcal +
-                                    "\n",
-                                style: TextStyle(color: Colors.white)),
-                          if (rol == "Cliente")
-                            Text(
-                                "Tiempo total ejercitado: " +
-                                    datos.totaltiempo +
-                                    "\n",
-                                style: TextStyle(color: Colors.white)),
-                          if (rol == "Cliente")
-                            Text(
-                                "Total dias ejercitados: " +
-                                    datos.nombre +
-                                    "\n",
-                                style: TextStyle(color: Colors.white)),
-                          if (rol == "Cliente")
-                            Text(
-                                "Kcal promedio utilizadas diariamente: " +
-                                    datos.kcal +
-                                    "\n",
-                                style: TextStyle(color: Colors.white)),
-                          if (rol == "Cliente")
-                            Text(
-                                "Tiempo promedio ejercitado diariamente: " +
-                                    datos.tiempo +
-                                    "\n",
-                                style: TextStyle(color: Colors.white)),
+                            Container(
+                                child: Row(children: <Widget>[
+                              Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                        margin: EdgeInsets.all(20),
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                4,
+                                        width:
+                                            MediaQuery.of(context).size.height /
+                                                5,
+                                        child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                        margin: EdgeInsets.all(
+                                                            1),
+                                                        height: MediaQuery
+                                                                    .of(context)
+                                                                .size
+                                                                .height /
+                                                            14,
+                                                        width: MediaQuery
+                                                                    .of(context)
+                                                                .size
+                                                                .width /
+                                                            3,
+                                                        child: Card(
+                                                            color:
+                                                                Colors
+                                                                        .orange[
+                                                                    400],
+                                                            semanticContainer:
+                                                                true,
+                                                            clipBehavior: Clip
+                                                                .antiAliasWithSaveLayer,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                            ),
+                                                            elevation: 10,
+                                                            margin:
+                                                                EdgeInsets.all(
+                                                                    0),
+                                                            child: ListTile(
+                                                              title: new Text(
+                                                                  "Gasto Kcal: ",
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white)),
+                                                              subtitle: Text(
+                                                                  datos
+                                                                      .totalkcal,
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white)),
+                                                            )))
+                                                  ]),
+                                              Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                        margin:
+                                                            EdgeInsets.all(1),
+                                                        height:
+                                                            MediaQuery.of(context)
+                                                                    .size
+                                                                    .height /
+                                                                14,
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            3,
+                                                        child: Card(
+                                                            color:
+                                                                Colors.orange,
+                                                            semanticContainer:
+                                                                true,
+                                                            clipBehavior: Clip
+                                                                .antiAliasWithSaveLayer,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                            ),
+                                                            elevation: 10,
+                                                            margin:
+                                                                EdgeInsets.all(
+                                                                    0),
+                                                            child: ListTile(
+                                                              title: new Text(
+                                                                  "Tiempo (Min): ",
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white)),
+                                                              subtitle: Text(
+                                                                  datos
+                                                                      .totaltiempo,
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white)),
+                                                            )))
+                                                  ]),
+                                              Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                        margin: EdgeInsets.all(
+                                                            1),
+                                                        height: MediaQuery
+                                                                    .of(context)
+                                                                .size
+                                                                .height /
+                                                            14,
+                                                        width: MediaQuery
+                                                                    .of(context)
+                                                                .size
+                                                                .width /
+                                                            3,
+                                                        child: Card(
+                                                            color:
+                                                                Colors
+                                                                        .orange[
+                                                                    600],
+                                                            semanticContainer:
+                                                                true,
+                                                            clipBehavior: Clip
+                                                                .antiAliasWithSaveLayer,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                            ),
+                                                            elevation: 10,
+                                                            margin:
+                                                                EdgeInsets.all(
+                                                                    0),
+                                                            child: ListTile(
+                                                              title: new Text(
+                                                                  "Dias: ",
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white)),
+                                                              subtitle: Text(
+                                                                  (int.parse(datos
+                                                                              .nombre) +
+                                                                          1)
+                                                                      .toString(),
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white)),
+                                                            )))
+                                                  ])
+                                            ]))
+                                  ]),
+                              Container(
+                                  margin: EdgeInsets.all(5),
+                                  child: Row(children: <Widget>[
+                                    Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                              margin: EdgeInsets.all(20),
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  4,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  5,
+                                              child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Container(
+                                                              margin:
+                                                                  EdgeInsets
+                                                                      .all(1),
+                                                              height: MediaQuery
+                                                                          .of(
+                                                                              context)
+                                                                      .size
+                                                                      .height /
+                                                                  9.5,
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width /
+                                                                  3,
+                                                              child: Card(
+                                                                  color: Colors
+                                                                          .orange[
+                                                                      400],
+                                                                  semanticContainer:
+                                                                      true,
+                                                                  clipBehavior:
+                                                                      Clip
+                                                                          .antiAliasWithSaveLayer,
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10.0),
+                                                                  ),
+                                                                  elevation: 10,
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              0),
+                                                                  child:
+                                                                      ListTile(
+                                                                    title: new Text(
+                                                                        "Kcal promedio diarias: ",
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                Colors.white)),
+                                                                    subtitle: Text(
+                                                                        datos
+                                                                            .kcal,
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                Colors.white)),
+                                                                  )))
+                                                        ]),
+                                                    Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Container(
+                                                              margin:
+                                                                  EdgeInsets
+                                                                      .all(1),
+                                                              height: MediaQuery
+                                                                          .of(
+                                                                              context)
+                                                                      .size
+                                                                      .height /
+                                                                  9.5,
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width /
+                                                                  3,
+                                                              child: Card(
+                                                                  color: Colors
+                                                                          .orange[
+                                                                      600],
+                                                                  semanticContainer:
+                                                                      true,
+                                                                  clipBehavior:
+                                                                      Clip
+                                                                          .antiAliasWithSaveLayer,
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10.0),
+                                                                  ),
+                                                                  elevation: 10,
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              0),
+                                                                  child:
+                                                                      ListTile(
+                                                                    title: new Text(
+                                                                        "Tiempo promedio diario: ",
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                Colors.white)),
+                                                                    subtitle: Text(
+                                                                        datos
+                                                                            .tiempo,
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                Colors.white)),
+                                                                  )))
+                                                        ]),
+                                                  ]))
+                                        ]),
+                                  ])),
+                            ]))
                         ]))))));
   }
 }

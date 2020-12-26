@@ -24,7 +24,7 @@ class Dos extends StatefulWidget {
 class _DosState extends State<Dos> {
   final Actividad data = new Actividad("", "", "", "", "", "", "", "");
   final InfoEjercicio datos =
-      new InfoEjercicio("", "", "", "", "", "", "", "", "", "", []);
+      new InfoEjercicio("", "", "", "", "", "", "", "", "", "", [], "", "");
 
   @override
   Widget build(BuildContext context) {

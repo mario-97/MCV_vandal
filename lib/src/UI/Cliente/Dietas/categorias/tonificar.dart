@@ -2,27 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mvp_vandal/src/UI/entrenador/detalle.dart';
 import 'package:mvp_vandal/src/datos/actividad.dart';
-import 'package:mvp_vandal/src/UI/Nutricionista/update.dart';
-
+import 'package:mvp_vandal/src/UI/Cliente/Dietas/Detalle.dart';
 import 'package:mvp_vandal/src/datos/minuta.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
-class DietaTres extends StatelessWidget {
+class DietaDos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TresDieta(),
+      home: DosDieta(),
     );
   }
 }
 
-class TresDieta extends StatefulWidget {
+class DosDieta extends StatefulWidget {
   @override
-  _TresDietaState createState() => _TresDietaState();
+  _DosDietaState createState() => _DosDietaState();
 }
 
-class _TresDietaState extends State<TresDieta> {
+class _DosDietaState extends State<DosDieta> {
   final Minuta data = new Minuta("", "", "", "", "", "", "", "", "");
 
   @override
@@ -39,7 +38,7 @@ class _TresDietaState extends State<TresDieta> {
         home: Scaffold(
             // termina barra drawer
             appBar: GradientAppBar(
-              title: Text("Dietas para Ganar Masa"),
+              title: Text("Dietas para Tonificar"),
               backgroundColorStart: Colors.orange[900],
               backgroundColorEnd: Colors.orange,
             ),
@@ -89,7 +88,7 @@ class _TresDietaState extends State<TresDieta> {
                                         elevation: 10,
                                         child: Column(children: [
                                           if (Docs.data()["tipodieta"] ==
-                                              "Ganar masa muscular")
+                                              "Tonificar")
                                             ListTile(
                                                 title: new Text(
                                                     "Tipo de dieta: " +
@@ -121,7 +120,7 @@ class _TresDietaState extends State<TresDieta> {
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              UpdateDieta(
+                                                              DetalleDieta(
                                                                 data: data,
                                                               )));
                                                 }),

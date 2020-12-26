@@ -96,7 +96,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         },
                         child: Text(
                           ' Continuar con Google',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(30.0),

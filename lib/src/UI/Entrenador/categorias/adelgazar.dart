@@ -24,7 +24,7 @@ class Uno extends StatefulWidget {
 class _UnoState extends State<Uno> {
   final Actividad data = new Actividad("", "", "", "", "", "", "", "");
   final InfoEjercicio datos =
-      new InfoEjercicio("", "", "", "", "", "", "", "", "", "", []);
+      new InfoEjercicio("", "", "", "", "", "", "", "", "", "", [], "", "");
 
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,7 @@ import 'package:mvp_vandal/src/datos/actividad.dart';
 import 'package:mvp_vandal/src/datos/minuta.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
+
 class DietaUno extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,8 @@ class DietaUno extends StatelessWidget {
   }
 }
 
+
+
 class UnoDieta extends StatefulWidget {
   @override
   _UnoDietaState createState() => _UnoDietaState();
@@ -27,6 +30,8 @@ class _UnoDietaState extends State<UnoDieta> {
   @override
   Widget build(BuildContext context) {
     Query query = FirebaseFirestore.instance.collection("dietas");
+
+
     return MaterialApp(
         theme: ThemeData(
           //color de fondo de la vista
@@ -114,6 +119,7 @@ class _UnoDietaState extends State<UnoDieta> {
                                                     color: Colors.white,
                                                   ),
                                                 ),
+                                                
                                                 onTap: () {
                                                   data.id = Docs.id;
                                                   Navigator.push(

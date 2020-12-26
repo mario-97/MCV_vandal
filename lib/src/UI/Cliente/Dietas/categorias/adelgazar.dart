@@ -1,33 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mvp_vandal/src/UI/entrenador/detalle.dart';
+import 'package:mvp_vandal/src/UI/Cliente/Dietas/Detalle.dart';
 import 'package:mvp_vandal/src/datos/actividad.dart';
-import 'package:mvp_vandal/src/UI/Nutricionista/update.dart';
-
 import 'package:mvp_vandal/src/datos/minuta.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
-class DietaTres extends StatelessWidget {
+
+class DietaUno extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/adelgazar',
+      home: UnoDieta(),
       debugShowCheckedModeBanner: false,
-      home: TresDieta(),
     );
   }
 }
 
-class TresDieta extends StatefulWidget {
+
+
+class UnoDieta extends StatefulWidget {
   @override
-  _TresDietaState createState() => _TresDietaState();
+  _UnoDietaState createState() => _UnoDietaState();
 }
 
-class _TresDietaState extends State<TresDieta> {
+class _UnoDietaState extends State<UnoDieta> {
   final Minuta data = new Minuta("", "", "", "", "", "", "", "", "");
-
   @override
   Widget build(BuildContext context) {
     Query query = FirebaseFirestore.instance.collection("dietas");
+
+
     return MaterialApp(
         theme: ThemeData(
           //color de fondo de la vista
@@ -39,7 +43,7 @@ class _TresDietaState extends State<TresDieta> {
         home: Scaffold(
             // termina barra drawer
             appBar: GradientAppBar(
-              title: Text("Dietas para Ganar Masa"),
+              title: Text("Dietas para adelgazar"),
               backgroundColorStart: Colors.orange[900],
               backgroundColorEnd: Colors.orange,
             ),
@@ -89,7 +93,7 @@ class _TresDietaState extends State<TresDieta> {
                                         elevation: 10,
                                         child: Column(children: [
                                           if (Docs.data()["tipodieta"] ==
-                                              "Ganar masa muscular")
+                                              "Perder peso")
                                             ListTile(
                                                 title: new Text(
                                                     "Tipo de dieta: " +
@@ -115,13 +119,14 @@ class _TresDietaState extends State<TresDieta> {
                                                     color: Colors.white,
                                                   ),
                                                 ),
+                                                
                                                 onTap: () {
                                                   data.id = Docs.id;
                                                   Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              UpdateDieta(
+                                                              DetalleDieta(
                                                                 data: data,
                                                               )));
                                                 }),

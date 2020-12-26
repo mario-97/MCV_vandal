@@ -1,4 +1,5 @@
 import 'package:mvp_vandal/src/authscreen.dart';
+import 'package:mvp_vandal/src/home.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mvp_vandal/src/datos/user.dart';
@@ -19,13 +20,14 @@ class MiApp extends StatelessWidget {
   String id;
   String nombre = "Ingese su nombre";
   String mail = "Correo Electronico";
-  String edad = "Edad";
-  String sexo = "Sexo";
-  String peso = "Peso (Kg)";
-  String altura = "Altura (cm)";
+
   @override
   Widget build(BuildContext context) {
     Query query = FirebaseFirestore.instance.collection("usuarios");
+    this.datos.edad = "Edad";
+    this.datos.sexo = "Sexo";
+    this.datos.peso = "Peso (Kg)";
+    this.datos.altura = "Altura (cm)";
     return MaterialApp(
         theme: ThemeData(
           //color de fondo de la vista
@@ -99,6 +101,7 @@ class MiApp extends StatelessWidget {
                               }
                             }
                           }
+                          print(datos.peso);
                           return Container(
                               margin:
                                   new EdgeInsets.symmetric(horizontal: 30.0),
@@ -170,7 +173,7 @@ class MiApp extends StatelessWidget {
                                                     fillColor: Colors.white,
                                                     hintStyle: TextStyle(
                                                         color: Colors.white),
-                                                    hintText: edad),
+                                                    hintText: datos.edad),
                                                 controller: contcmp5,
                                               ),
                                             ),
@@ -192,7 +195,7 @@ class MiApp extends StatelessWidget {
                                                   fillColor: Colors.white,
                                                   hintStyle: TextStyle(
                                                       color: Colors.white),
-                                                  hintText: sexo,
+                                                  hintText: datos.sexo,
                                                 ),
                                                 controller: contcmp6,
                                               ),
@@ -209,7 +212,7 @@ class MiApp extends StatelessWidget {
                                                   fillColor: Colors.white,
                                                   hintStyle: TextStyle(
                                                       color: Colors.white),
-                                                  hintText: peso,
+                                                  hintText: datos.peso,
                                                 ),
                                                 controller: contcmp7,
                                               ),
@@ -226,7 +229,7 @@ class MiApp extends StatelessWidget {
                                                   fillColor: Colors.white,
                                                   hintStyle: TextStyle(
                                                       color: Colors.white),
-                                                  hintText: altura,
+                                                  hintText: datos.altura,
                                                 ),
                                                 controller: contcmp8,
                                               ),
@@ -338,7 +341,11 @@ class MiApp extends StatelessWidget {
                                                 ),
                                                 color: Colors.orange[900],
                                                 onPressed: () {
-                                                  Navigator.pop(context);
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              Home()));
                                                 }),
                                           ),
                                         ]),

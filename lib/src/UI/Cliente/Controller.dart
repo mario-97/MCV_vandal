@@ -84,10 +84,17 @@ class UserController extends StatelessWidget {
 
     void resumen() async {
       Query query = FirebaseFirestore.instance.collection("ListaEjercicio");
+      Query query2 = FirebaseFirestore.instance.collection("Resumen");
+
+      int count = 0;
+      await query2.get().then((querySnapshot) async {
+        count = querySnapshot.size;
+      });
       await FirebaseFirestore.instance.collection("Resumen").add({
         "totalkcal": datos.totalkcal,
         "totaltiempo": datos.totaltiempo,
         "id_cliente": datos.idCliente,
+        "id_incremental": count,
       }).then((value) => print(value.id));
       WriteBatch batch = FirebaseFirestore.instance.batch();
       await query.get().then((querySnapshot) async {
@@ -96,7 +103,24 @@ class UserController extends StatelessWidget {
         });
         await batch.commit();
       });
+
       Navigator.of(context).pop();
+    }
+
+    void metas() async {
+      Query query = FirebaseFirestore.instance.collection("Estadistica");
+      WriteBatch batch = FirebaseFirestore.instance.batch();
+      await query.get().then((querySnapshot) async {
+        querySnapshot.docs.forEach((document) {
+          batch.update(document.reference, {
+            'kgobjetivo': this.datos.kgobjetivo,
+            'tiempoobjetivo': this.datos.tiempoobjetivo
+          });
+        });
+        await batch.commit();
+      });
+
+      Navigator.pop(context);
     }
 
     if (datos.operacion == "Ingresar") {
@@ -110,6 +134,8 @@ class UserController extends StatelessWidget {
     } else if (datos.operacion == "Terminar") {
       resumen();
       Navigator.of(context).pop();
+    } else if (datos.operacion == "Metas") {
+      metas();
     }
     return Container(child: Text(datos.operacion));
   }

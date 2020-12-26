@@ -6,6 +6,8 @@ import 'package:mvp_vandal/src/datos/minuta.dart';
 import 'package:mvp_vandal/src/Controller/controllerDietas.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
+import 'package:mvp_vandal/src/authscreen.dart';
+
 class UpdateDieta extends StatelessWidget {
   final Minuta data;
   UpdateDieta({this.data});
@@ -28,9 +30,13 @@ class UpdateDieta extends StatelessWidget {
   String merienda = "merienda";
   String calorias = "calorias consumidas";
 
+
+
+
   @override
   Widget build(BuildContext context) {
     Query query = FirebaseFirestore.instance.collection("dietas");
+  
     return MaterialApp(
         theme: ThemeData(
           //color de fondo de la vista
@@ -70,6 +76,8 @@ class UpdateDieta extends StatelessWidget {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
+
+                    
                           Expanded(
                               child: StreamBuilder<QuerySnapshot>(
                                   stream: query.snapshots(),
@@ -111,6 +119,8 @@ class UpdateDieta extends StatelessWidget {
                                         }
                                       }
                                     }
+                                    
+                                    
 
                                     return Container(
                                         height:
@@ -309,6 +319,8 @@ class UpdateDieta extends StatelessWidget {
                                                       ),
                                                     ),
                                                   ]),
+                                              
+                                              
                                               Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -379,6 +391,7 @@ class UpdateDieta extends StatelessWidget {
                                                       ),
                                                     ),
                                                   ]),
+                                             
                                               Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -410,6 +423,7 @@ class UpdateDieta extends StatelessWidget {
                                                       ),
                                                     ),
                                                   ]),
+                                                
                                               Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -436,7 +450,9 @@ class UpdateDieta extends StatelessWidget {
                                                     ),
                                                   ])
                                             ]));
-                                  }))
+                                  })),
+                            
+                                  
                         ])))));
   }
 }

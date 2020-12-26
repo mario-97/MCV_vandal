@@ -17,6 +17,8 @@ class InfoEjercicio {
   String totalkcal;
   String totaltiempo;
   List<Grafico> data;
+  String kgobjetivo;
+  String tiempoobjetivo;
 
   InfoEjercicio(
       this.idEjercicio,
@@ -29,5 +31,7 @@ class InfoEjercicio {
       this.idInfo,
       this.totalkcal,
       this.totaltiempo,
-      this.data);
+      this.data,
+      this.kgobjetivo,
+      this.tiempoobjetivo);
 }
